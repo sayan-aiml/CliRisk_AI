@@ -124,20 +124,21 @@ const MetricValue = styled.span<{ change?: number }>`
 function ScenarioComparison() {
   const [selectedScenarios, setSelectedScenarios] = useState([1, 2, 3]); // Baseline, 2035, 2050
   const [scenarioResults, setScenarioResults] = useState<Record<number, any>>({});
-  const [assessment, setAssessment] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [assessment, setAssessment] = useState<any>(null);
+  // const [isLoading, setIsLoading] = useState(false);
 
   React.useEffect(() => {
     const saved = localStorage.getItem('lastAssessment');
     if (saved) {
       const parsed = JSON.parse(saved);
-      setAssessment(parsed);
+      // setAssessment(parsed);
       fetchAllScenarios(parsed);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchAllScenarios = async (baseAssessment: any) => {
-    setIsLoading(true);
+    // setIsLoading(true);
     const results: Record<number, any> = {};
 
     try {
@@ -165,7 +166,7 @@ function ScenarioComparison() {
     } catch (err) {
       console.error("Failed to fetch scenario data:", err);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
 

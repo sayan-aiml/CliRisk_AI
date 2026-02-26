@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { MapContainer, TileLayer, useMapEvents, Marker, Popup, ZoomControl } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { FiMapPin, FiInfo, FiLayers, FiMap } from 'react-icons/fi';
-import climateRiskApi, { RiskScoreResponse } from '../services/climateRiskApi';
+import { FiMapPin, FiInfo, FiMap } from 'react-icons/fi';
+import climateRiskApi from '../services/climateRiskApi';
 
 // Fix Leaflet marker icon issue
 const markerIcon = require('leaflet/dist/images/marker-icon.png');
@@ -36,7 +36,7 @@ const MapWrapper = styled.div`
   }
 `;
 
-const MapControls = styled.div`
+/* const MapControls = styled.div`
   position: absolute;
   top: 20px;
   right: 20px;
@@ -44,7 +44,7 @@ const MapControls = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`;
+`; */
 
 const LeftControls = styled.div`
   position: absolute;

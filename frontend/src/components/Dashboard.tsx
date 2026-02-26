@@ -170,7 +170,7 @@ function Dashboard() {
     }
   ]);
 
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   React.useEffect(() => {
     const fetchStats = async () => {
@@ -198,7 +198,7 @@ function Dashboard() {
       } catch (error) {
         console.error("Failed to fetch dashboard stats:", error);
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     };
 
