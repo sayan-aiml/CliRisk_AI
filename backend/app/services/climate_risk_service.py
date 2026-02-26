@@ -15,7 +15,7 @@ class ClimateRiskService:
     """Core climate risk calculation service"""
     
     def __init__(self):
-        self.model_version = settings.MODEL_VERSION
+        self.model_version = settings.APP_MODEL_VERSION
         self.confidence_threshold = settings.CONFIDENCE_THRESHOLD
         
     async def calculate_risk_score(self, request: RiskScoreRequest) -> RiskScoreResponse:
