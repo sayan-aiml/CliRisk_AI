@@ -1,6 +1,7 @@
-from pydantic_settings import BaseSettings
-from typing import List, Optional
-from pydantic import AnyHttpUrl, validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from typing import List, Optional, Union, Any
+from pydantic import field_validator
+import json
 
 class Settings(BaseSettings):
     # Project settings
@@ -10,7 +11,8 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
     
     # Server settings
-    BACKEND_CORS_ORIGINS: List[str] = [
+    # Use Union strictly to prevent early JSON parsing errors in pydantic-settings
+    BACKEND_CORS_ORIGINS: Union[List[str], str] = [
         "http://localhost:3000",
         "http://localhost:3001",
         "http://localhost:8000",
@@ -19,7 +21,7 @@ class Settings(BaseSettings):
         "http://127.0.0.1:8000",
     ]
     
-    ALLOWED_HOSTS: List[str] = ["localhost", "127.0.0.1"]
+    ALLOWED_HOSTS: Union[List[str], str] = ["localhost", "127.0.0.1"]
     
     # Database settings
     DATABASE_URL: str = "postgresql://climaterisk:climaterisk123@localhost:5432/climaterisk"
@@ -51,14 +53,22 @@ class Settings(BaseSettings):
     # Logging
     LOG_LEVEL: str = "INFO"
     
-    @validator("BACKEND_CORS_ORIGINS", pre=True)
-    def assemble_cors_origins(cls, v):
-        if isinstance(v, str):
+    @field_validator("BACKEND_CORS_ORIGINS", "ALLOWED_HOSTS", mode="before")
+    @classmethod
+    def assemble_origins_and_hosts(cls, v: Any) -> Any:
+        if isinstance(v, str) and not v.startswith(("[", "{")):
             return [i.strip() for i in v.split(",")]
+        elif isinstance(v, str) and v.startswith(("[", "{")):
+            try:
+                return json.loads(v)
+            except json.JSONDecodeError:
+                return [i.strip() for i in v.split(",")]
         return v
 
-    class Config:
-        case_sensitive = True
-        env_file = ".env"
+    model_config = SettingsConfigDict(
+        case_sensitive=True,
+        env_file=".env",
+        extra="ignore"
+    )
 
 settings = Settings()
