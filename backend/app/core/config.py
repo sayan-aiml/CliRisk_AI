@@ -47,7 +47,7 @@ class Settings(BaseSettings):
     GEOSPATIAL_DATA_DIR: str = "/app/data/geospatial"
     
     # Model settings
-    MODEL_VERSION: str = "1.0.0"
+    APP_MODEL_VERSION: str = "1.0.0"
     CONFIDENCE_THRESHOLD: float = 0.7
     
     # Logging
