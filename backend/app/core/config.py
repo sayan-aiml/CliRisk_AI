@@ -5,7 +5,7 @@ import json
 
 class Settings(BaseSettings):
     # Project settings
-    PROJECT_NAME: str = "ClimateRisk AI"
+    PROJECT_NAME: str = "CliRisk AI"
     API_V1_STR: str = "/api/v1"
     SECRET_KEY: str = "your-secret-key-change-in-production"
     ENVIRONMENT: str = "development"

@@ -1,4 +1,4 @@
-# ClimateRisk AI
+# CliRisk AI
 
 A hyperlocal climate risk intelligence platform that quantifies long-term environmental exposure and converts it into financial risk metrics for insurers, banks, developers, asset managers, and governments.
 

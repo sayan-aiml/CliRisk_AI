@@ -244,7 +244,7 @@ function MapView() {
         <ControlPanel>
           <ControlTitle>
             <FiMap />
-            ClimateRisk Map
+            CliRisk Map
           </ControlTitle>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', marginBottom: '1rem' }}>
             Professional climate risk assessments using **Open-Meteo Public Data**.

@@ -1,4 +1,4 @@
-# ClimateRisk AI - Development Setup
+# CliRisk AI - Development Setup
 
 ## Quick Start
 

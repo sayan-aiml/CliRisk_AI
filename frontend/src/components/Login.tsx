@@ -125,70 +125,70 @@ const ErrorMessage = styled.div`
 `;
 
 const Login: React.FC = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
-    const handleLogin = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setIsLoading(true);
-        setError('');
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError('');
 
-        try {
-            await authService.login(username, password);
-            navigate('/');
-        } catch (err: any) {
-            setError('Invalid username or password');
-        } finally {
-            setIsLoading(false);
-        }
-    };
+    try {
+      await authService.login(username, password);
+      navigate('/');
+    } catch (err: any) {
+      setError('Invalid username or password');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-    return (
-        <LoginContainer>
-            <LoginCard>
-                <Logo>
-                    <FiMap />
-                    <span>ClimateRisk AI</span>
-                </Logo>
-                <Title>Enterprise Access</Title>
-                <Form onSubmit={handleLogin}>
-                    <InputGroup>
-                        <Label>Username</Label>
-                        <InputWrapper>
-                            <InputIcon><FiUser /></InputIcon>
-                            <StyledInput
-                                type="text"
-                                placeholder="Admin"
-                                value={username}
-                                onChange={(e) => setUsername(e.target.value)}
-                                required
-                            />
-                        </InputWrapper>
-                    </InputGroup>
-                    <InputGroup>
-                        <Label>Password</Label>
-                        <InputWrapper>
-                            <InputIcon><FiLock /></InputIcon>
-                            <StyledInput
-                                type="password"
-                                placeholder="••••••••"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                        </InputWrapper>
-                    </InputGroup>
-                    <LoginButton type="submit" disabled={isLoading}>
-                        {isLoading ? 'Authenticating...' : 'Sign In'}
-                    </LoginButton>
-                    {error && <ErrorMessage>{error}</ErrorMessage>}
-                </Form>
-            </LoginCard>
-        </LoginContainer>
-    );
+  return (
+    <LoginContainer>
+      <LoginCard>
+        <Logo>
+          <FiMap />
+          <span>CliRisk AI</span>
+        </Logo>
+        <Title>Enterprise Access</Title>
+        <Form onSubmit={handleLogin}>
+          <InputGroup>
+            <Label>Username</Label>
+            <InputWrapper>
+              <InputIcon><FiUser /></InputIcon>
+              <StyledInput
+                type="text"
+                placeholder="Admin"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
+            </InputWrapper>
+          </InputGroup>
+          <InputGroup>
+            <Label>Password</Label>
+            <InputWrapper>
+              <InputIcon><FiLock /></InputIcon>
+              <StyledInput
+                type="password"
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </InputWrapper>
+          </InputGroup>
+          <LoginButton type="submit" disabled={isLoading}>
+            {isLoading ? 'Authenticating...' : 'Sign In'}
+          </LoginButton>
+          {error && <ErrorMessage>{error}</ErrorMessage>}
+        </Form>
+      </LoginCard>
+    </LoginContainer>
+  );
 };
 
 export default Login;

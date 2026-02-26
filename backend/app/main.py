@@ -7,7 +7,7 @@ from app.api.api_v1.api import api_router
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
-    description="ClimateRisk AI - Hyperlocal climate risk intelligence platform",
+    description="CliRisk AI - Hyperlocal climate risk intelligence platform",
     version="1.0.0",
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
@@ -44,7 +44,7 @@ async def root():
 async def health_check():
     return {
         "status": "healthy",
-        "service": "ClimateRisk AI API"
+        "service": "CliRisk AI API"
     }
 
 if __name__ == "__main__":

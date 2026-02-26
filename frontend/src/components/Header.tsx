@@ -93,7 +93,7 @@ function Header() {
     <HeaderContainer>
       <Logo>
         <FiMap />
-        <span>ClimateRisk AI</span>
+        <span>CliRisk AI</span>
       </Logo>
 
       <Nav>

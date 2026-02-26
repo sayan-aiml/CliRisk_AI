@@ -1,4 +1,4 @@
-# ClimateRisk AI - MVP Implementation Summary
+# CliRisk AI - MVP Implementation Summary
 
 ## 🎯 What We've Built
 
