@@ -1,0 +1,164 @@
+/* Global Styles for ClimateRisk AI */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-emerald: #00d084;
+  --primary-teal: #06b6d4;
+  --primary-dark: #0a192f;
+  --secondary-dark: #112240;
+  --accent-blue: #64ffda;
+  --text-light: #e6f1ff;
+  --text-muted: #8892b0;
+  --danger-red: #ff4757;
+  --warning-orange: #ffa502;
+  --success-green: #2ed573;
+  --glass-bg: rgba(17, 34, 64, 0.7);
+  --glass-border: rgba(100, 255, 218, 0.1);
+  --shadow-glow: 0 0 20px rgba(100, 255, 218, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--primary-dark);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Glassmorphism effects */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-glow);
+}
+
+/* Metric cards */
+.metric-card {
+  background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--accent-blue);
+}
+
+/* Risk category colors */
+.risk-low { color: var(--success-green); }
+.risk-moderate { color: var(--warning-orange); }
+.risk-high { color: var(--danger-red); }
+.risk-severe { color: #ff0000; }
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-blue);
+}
+
+/* Map container */
+.map-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Loading spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--secondary-dark);
+  border-top: 4px solid var(--primary-teal);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Button styles */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-teal) 0%, var(--primary-emerald) 100%);
+  color: var(--primary-dark);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Form inputs */
+.form-input {
+  background: var(--secondary-dark);
+  border: 1px solid var(--glass-border);
+  color: var(--text-light);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+}
+
+/* Charts */
+.chart-container {
+  background: var(--secondary-dark);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid var(--glass-border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .metric-card {
+    padding: 1rem;
+  }
+  
+  .btn-primary {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}

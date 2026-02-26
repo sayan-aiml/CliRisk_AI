@@ -1,0 +1,43 @@
+services:
+  # Database: PostgreSQL with PostGIS
+  - type: database
+    name: climaterisk-db
+    plan: free # Note: Render free tier DB lasts 90 days
+    databaseName: climaterisk
+    user: climaterisk
+    # PostGIS is usually pre-installed on Render DBs or can be enabled via SQL
+
+  # Redis for caching
+  - type: redis
+    name: climaterisk-redis
+    plan: free
+    ipAllowList: [] # Only allow internal connections
+
+  # Backend API
+  - type: web
+    name: climaterisk-backend
+    env: python
+    buildCommand: "cd backend && pip install -r requirements.txt"
+    startCommand: "cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: climaterisk-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: climaterisk-redis
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: PROJECT_NAME
+        value: "ClimateRisk AI"
+      - key: ENVIRONMENT
+        value: production
+      - key: BACKEND_CORS_ORIGINS
+        value: "*" # Update this to your Vercel URL once deployed
+      - key: ALLOWED_HOSTS
+        value: "localhost,127.0.0.1,climaterisk-backend.onrender.com" # Add your Render host
+    autoDeploy: true
+
