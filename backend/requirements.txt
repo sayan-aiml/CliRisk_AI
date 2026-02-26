@@ -1,6 +1,7 @@
 # Build Dependencies
 setuptools>=68.0.0
 wheel
+email-validator>=2.0.0
 
 # Core Framework
 fastapi==0.104.1
