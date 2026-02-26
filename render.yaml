@@ -1,12 +1,12 @@
-services:
+databases:
   # Database: PostgreSQL with PostGIS
-  - type: database
-    name: climaterisk-db
+  - name: climaterisk-db
     plan: free # Note: Render free tier DB lasts 90 days
     databaseName: climaterisk
     user: climaterisk
     # PostGIS is usually pre-installed on Render DBs or can be enabled via SQL
 
+services:
   # Redis for caching
   - type: redis
     name: climaterisk-redis
@@ -40,4 +40,3 @@ services:
       - key: ALLOWED_HOSTS
         value: "localhost,127.0.0.1,climaterisk-backend.onrender.com" # Add your Render host
     autoDeploy: true
-
